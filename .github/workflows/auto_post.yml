@@ -1,0 +1,27 @@
+name: Auto Blogger & Reddit Poster
+
+on:
+  schedule:
+    # ثلاث مرات يوميًا: 09:00، 15:00، 21:00 UTC
+    - cron: "0 9,15,21 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - run: npm ci
+      - run: node index.js
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          BLOGGER_ID: ${{ secrets.BLOGGER_ID }}
+          BLOGGER_TOKEN: ${{ secrets.BLOGGER_TOKEN }}
+          REDDIT_USER: ${{ secrets.REDDIT_USER }}
+          REDDIT_PASS: ${{ secrets.REDDIT_PASS }}
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_SECRET: ${{ secrets.REDDIT_SECRET }}
+          REDDIT_SUBREDDIT: ${{ secrets.REDDIT_SUBREDDIT }}
