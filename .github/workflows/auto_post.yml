@@ -3,7 +3,8 @@ name: Auto Blogger & Reddit Poster
 on:
   schedule:
     # ثلاث مرات يوميًا: 09:00، 15:00، 21:00 UTC
-    - cron: "0 9,15,21 * * *"
+    #- cron: "0 9,15,21 * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 jobs:
