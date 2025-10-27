@@ -1,37 +1,37 @@
-name: Auto Blogger & Reddit Poster
+# name: Auto Blogger & Reddit Poster
 
-on:
-  schedule:
-  # ثلاث مرات يوميًا: 09:00، 15:00، 21:00 UTC
-    #- cron: "0 9,15,21 * * *"
-    # كل 5 دقائق
-    - cron: "*/5 * * * *"
-  workflow_dispatch: # لتشغيله يدويًا من GitHub Actions
+# on:
+#   schedule:
+#   # ثلاث مرات يوميًا: 09:00، 15:00، 21:00 UTC
+#     #- cron: "0 9,15,21 * * *"
+#     # كل 5 دقائق
+#     - cron: "*/5 * * * *"
+#   workflow_dispatch: # لتشغيله يدويًا من GitHub Actions
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: '18'
 
-      - name: Install dependencies
-        run: npm install   # ✅ تم تعديلها من npm ci إلى npm install
+#       - name: Install dependencies
+#         run: npm install   # ✅ تم تعديلها من npm ci إلى npm install
 
-      - name: Run auto poster script
-        run: node index.js
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          BLOGGER_ID: ${{ secrets.BLOGGER_ID }}
-          BLOGGER_TOKEN: ${{ secrets.BLOGGER_TOKEN }}
-          REDDIT_USER: ${{ secrets.REDDIT_USER }}
-          REDDIT_PASS: ${{ secrets.REDDIT_PASS }}
-          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
-          REDDIT_SECRET: ${{ secrets.REDDIT_SECRET }}
-          REDDIT_SUBREDDIT: ${{ secrets.REDDIT_SUBREDDIT }}
+#       - name: Run auto poster script
+#         run: node index.js
+#         env:
+#           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+#           BLOGGER_ID: ${{ secrets.BLOGGER_ID }}
+#           BLOGGER_TOKEN: ${{ secrets.BLOGGER_TOKEN }}
+#           REDDIT_USER: ${{ secrets.REDDIT_USER }}
+#           REDDIT_PASS: ${{ secrets.REDDIT_PASS }}
+#           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+#           REDDIT_SECRET: ${{ secrets.REDDIT_SECRET }}
+#           REDDIT_SUBREDDIT: ${{ secrets.REDDIT_SUBREDDIT }}
